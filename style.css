@@ -1,29 +1,28 @@
-/* --- Diccionario IA - Diseño v3.0 (Claro + Material Design) --- */
-/* Un rediseño completo con una nueva dirección: un Modo Claro limpio, combinado
-   con los principios de color y contraste de Material Design para una interfaz
-   vibrante y coherente. */
+/* --- Diccionario IA - Diseño v3.1 (Botones Mejorados) --- */
+/* Actualización enfocada en rediseñar los botones de sugerencia para
+   que coincidan con la referencia del usuario: un estilo de "píldora" 
+   moderno y coherente. */
 
 :root {
     /* Paleta de Colores Principal (Modo Claro) */
-    --background-color: #f4f6f8; /* Un gris muy claro para el fondo */
-    --app-bg: #ffffff; /* Blanco puro para la ventana principal */
-    --chat-bubble-bot: #eef1f4; /* Un gris sutil para las burbujas de la IA */
-    --chat-bubble-user: #1976d2; /* Azul intenso inspirado en Material Design */
-    --input-bg: #eef1f4; /* Fondo para la cápsula de entrada */
-    --border-color: #dfe3e7; /* Color de borde suave */
+    --background-color: #f4f6f8; 
+    --app-bg: #ffffff; 
+    --chat-bubble-bot: #eef1f4; 
+    --chat-bubble-user: #1976d2; 
+    --input-bg: #eef1f4; 
+    --border-color: #dfe3e7; 
     
     /* Colores de Acento y Texto (Material Design) */
-    --text-primary: #212121; /* Negro casi puro para máxima legibilidad */
-    --text-secondary: #6c757d; /* Gris para texto menos importante */
-    --accent-primary: #1976d2; /* Azul principal */
-    --accent-secondary: #673ab7; /* Púrpura para los botones de sugerencia */
-    --accent-secondary-light: #f0ebf9; /* Fondo claro para los botones de sugerencia */
+    --text-primary: #212121; 
+    --text-secondary: #6c757d; 
+    --accent-primary: #1976d2; 
+    --accent-secondary: #673ab7; 
 
     /* Fuentes y Bordes */
     --main-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --border-radius-app: 22px;
     --border-radius-bubble: 20px;
-    --border-radius-button: 16px; /* Bordes más redondeados para un look más "suave" */
+    --border-radius-button: 16px;
 }
 
 /* --- ESTILOS GLOBALES Y DE FONDO --- */
@@ -143,7 +142,7 @@ body {
 .bot-message ul { padding-left: 20px; margin: 10px 0 0; }
 .bot-message ul li { margin-bottom: 5px; }
 
-/* --- BOTONES DE SUGERENCIA (NUEVO ESTILO MATERIAL "CHIP") --- */
+/* --- BOTONES DE SUGERENCIA (¡NUEVO DISEÑO!) --- */
 .suggestion-buttons-container {
     margin-top: 20px;
     padding-top: 15px;
@@ -153,29 +152,30 @@ body {
     gap: 12px;
 }
 .bot-message .suggestion-btn {
-    background-color: var(--accent-secondary-light);
-    color: var(--accent-secondary);
-    border: 1px solid #dcd1f0;
-    padding: 10px 18px;
-    border-radius: 20px; /* Completamente redondeado como un chip */
+    background-color: var(--app-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    padding: 12px 20px;
+    border-radius: 100px; /* Forma de píldora perfecta */
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03); /* Sombra muy sutil */
 }
 .bot-message .suggestion-btn:hover {
-    background-color: var(--accent-secondary);
+    background-color: var(--accent-primary);
     color: white;
-    border-color: var(--accent-secondary);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(103, 58, 183, 0.2);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(25, 118, 210, 0.2);
 }
 
 /* --- ÁREA DE ENTRADA --- */
 .input-area {
     padding: 20px;
     border-top: 1px solid var(--border-color);
-    background: #f8f9fa; /* Un poco más oscuro que el blanco para la sección */
+    background: #f8f9fa;
 }
 .input-capsule {
     background-color: var(--input-bg);
@@ -223,7 +223,6 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(25, 118, 210, 0.3);
 }
-/* Estilo secundario para el botón 'Simple' */
 .button-container button:first-of-type {
     background-color: var(--input-bg);
     color: var(--text-secondary);
