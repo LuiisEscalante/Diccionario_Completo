@@ -1,25 +1,29 @@
-/* --- Diccionario IA - Nuevo Diseño v2.0 --- */
-/* Un rediseño completo enfocado en la coherencia, jerarquía y estética de macOS. */
+/* --- Diccionario IA - Diseño v3.0 (Claro + Material Design) --- */
+/* Un rediseño completo con una nueva dirección: un Modo Claro limpio, combinado
+   con los principios de color y contraste de Material Design para una interfaz
+   vibrante y coherente. */
 
 :root {
-    /* Paleta de Colores Principal (Modo Oscuro) */
-    --background-color: #1a1a1c; /* Un negro ligeramente más suave que el puro */
-    --app-bg: #2d2d2f; /* El fondo principal de la ventana de la app */
-    --chat-bubble-bot: #3e3e40; /* Burbujas de chat de la IA */
-    --chat-bubble-user: #0a84ff; /* Azul vibrante de iMessage para el usuario */
-    --input-bg: #3e3e40; /* Fondo para la cápsula de entrada y botones */
-    --header-footer-border: #424245; /* Línea sutil para separar secciones */
+    /* Paleta de Colores Principal (Modo Claro) */
+    --background-color: #f4f6f8; /* Un gris muy claro para el fondo */
+    --app-bg: #ffffff; /* Blanco puro para la ventana principal */
+    --chat-bubble-bot: #eef1f4; /* Un gris sutil para las burbujas de la IA */
+    --chat-bubble-user: #1976d2; /* Azul intenso inspirado en Material Design */
+    --input-bg: #eef1f4; /* Fondo para la cápsula de entrada */
+    --border-color: #dfe3e7; /* Color de borde suave */
     
-    /* Colores de Texto */
-    --text-primary: #f2f2f7; /* Un blanco roto, más suave para la vista */
-    --text-secondary: #a0a0a5; /* Para placeholders y texto menos importante */
-    --text-accent: #0a84ff; /* Para títulos y enlaces dentro de las burbujas */
+    /* Colores de Acento y Texto (Material Design) */
+    --text-primary: #212121; /* Negro casi puro para máxima legibilidad */
+    --text-secondary: #6c757d; /* Gris para texto menos importante */
+    --accent-primary: #1976d2; /* Azul principal */
+    --accent-secondary: #673ab7; /* Púrpura para los botones de sugerencia */
+    --accent-secondary-light: #f0ebf9; /* Fondo claro para los botones de sugerencia */
 
     /* Fuentes y Bordes */
     --main-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --border-radius-app: 22px; /* Bordes redondeados de la ventana principal */
-    --border-radius-bubble: 20px; /* Bordes de las burbujas de chat */
-    --border-radius-button: 12px; /* Bordes para botones y cápsula */
+    --border-radius-app: 22px;
+    --border-radius-bubble: 20px;
+    --border-radius-button: 16px; /* Bordes más redondeados para un look más "suave" */
 }
 
 /* --- ESTILOS GLOBALES Y DE FONDO --- */
@@ -33,69 +37,47 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    /* Un gradiente sutil para dar profundidad al fondo */
-    background-image: radial-gradient(circle at top, #3a3a3c 0%, var(--background-color) 70%);
 }
 
 /* --- PANTALLA DE BIENVENIDA (API KEY) --- */
-/* Estilo unificado para la primera pantalla que ve el usuario */
 #api-key-container {
     background-color: var(--app-bg);
     padding: 40px;
     border-radius: var(--border-radius-app);
     text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    border: 1px solid var(--header-footer-border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
     max-width: 400px;
 }
-
-#api-key-container h2 {
-    margin-top: 0;
-    font-weight: 700;
-}
-#api-key-container p {
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
+#api-key-container h2 { margin-top: 0; font-weight: 700; }
+#api-key-container p { color: var(--text-secondary); line-height: 1.5; }
 #api-key-input {
     width: 100%;
     box-sizing: border-box;
     padding: 14px;
     margin-top: 20px;
-    border: none;
-    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    background-color: #f8f9fa;
     color: var(--text-primary);
     border-radius: var(--border-radius-button);
     font-size: 1rem;
 }
-#api-key-input:focus {
-    outline: 2px solid var(--text-accent);
-}
+#api-key-input:focus { outline: 2px solid var(--accent-primary); }
 #api-key-container button {
     margin-top: 25px;
     padding: 14px 30px;
-    background-color: var(--chat-bubble-user);
+    background-color: var(--accent-primary);
     color: white;
     border: none;
     border-radius: var(--border-radius-button);
     cursor: pointer;
     font-weight: 600;
     font-size: 1rem;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.25);
 }
-#api-key-container button:hover {
-    transform: scale(1.05);
-}
-#api-key-container a {
-    display: block;
-    margin-top: 20px;
-    color: var(--text-secondary);
-    font-size: 0.9em;
-    text-decoration: none;
-}
-#api-key-container a:hover {
-    text-decoration: underline;
-}
+#api-key-container button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(25, 118, 210, 0.3); }
+#api-key-container a { display: block; margin-top: 20px; color: var(--text-secondary); font-size: 0.9em; }
 
 /* --- CONTENEDOR PRINCIPAL DE LA APP --- */
 #app-container {
@@ -107,25 +89,18 @@ body {
     border-radius: var(--border-radius-app);
     display: flex;
     flex-direction: column;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--header-footer-border);
-    overflow: hidden; /* Clave para mantener los bordes redondeados en los hijos */
+    box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
 }
 
 /* --- CABECERA DE LA APP --- */
 .app-header {
     text-align: center;
     padding: 16px;
-    border-bottom: 1px solid var(--header-footer-border);
-    background-color: #262628; /* Un poco más oscuro para dar peso */
+    border-bottom: 1px solid var(--border-color);
 }
-
-.app-header h1 {
-    font-size: 1rem;
-    margin: 0;
-    font-weight: 600;
-    color: var(--text-secondary);
-}
+.app-header h1 { font-size: 1rem; margin: 0; font-weight: 600; color: var(--text-secondary); }
 
 /* --- VENTANA DE CHAT --- */
 .chat-window {
@@ -134,21 +109,11 @@ body {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 16px; /* Espaciado consistente entre burbujas */
+    gap: 16px;
 }
-
-/* Scrollbar personalizado estilo macOS */
-.chat-window::-webkit-scrollbar {
-    width: 8px;
-}
-.chat-window::-webkit-scrollbar-track {
-    background: transparent;
-}
-.chat-window::-webkit-scrollbar-thumb {
-    background-color: #555;
-    border-radius: 20px;
-    border: 2px solid var(--app-bg);
-}
+.chat-window::-webkit-scrollbar { width: 8px; }
+.chat-window::-webkit-scrollbar-track { background: transparent; }
+.chat-window::-webkit-scrollbar-thumb { background-color: #d6dbe1; border-radius: 20px; border: 2px solid var(--app-bg); }
 
 /* --- BURBUJAS DE CHAT --- */
 .chat-message {
@@ -160,85 +125,70 @@ body {
     animation: fadeInSlideUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     line-height: 1.6;
 }
-
 .user-message {
     background-color: var(--chat-bubble-user);
     color: white;
     align-self: flex-end;
-    border-bottom-right-radius: 5px; /* Detalle de iMessage */
+    border-bottom-right-radius: 5px;
 }
-
 .bot-message {
     background-color: var(--chat-bubble-bot);
     color: var(--text-primary);
     align-self: flex-start;
-    border-bottom-left-radius: 5px; /* Detalle de iMessage */
+    border-bottom-left-radius: 5px;
 }
+.bot-message h3 { margin-top: 0; margin-bottom: 12px; color: var(--accent-primary); font-weight: 700; }
+.bot-message p { margin: 0 0 10px 0; }
+.bot-message strong { color: var(--text-secondary); font-weight: 500; }
+.bot-message ul { padding-left: 20px; margin: 10px 0 0; }
+.bot-message ul li { margin-bottom: 5px; }
 
-/* Estilos para el contenido dentro de las burbujas de la IA */
-.bot-message h3 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    color: var(--text-accent);
-    font-weight: 700;
-}
-.bot-message p {
-    margin: 0 0 10px 0;
-}
-.bot-message strong {
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-.bot-message ul {
-    padding-left: 20px;
-    margin: 10px 0 0;
-}
-.bot-message ul li {
-    margin-bottom: 5px;
-}
-
-/* Contenedor para los botones de sugerencia */
+/* --- BOTONES DE SUGERENCIA (NUEVO ESTILO MATERIAL "CHIP") --- */
 .suggestion-buttons-container {
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid var(--header-footer-border);
+    border-top: 1px solid var(--border-color);
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
 }
 .bot-message .suggestion-btn {
-    background-color: #505052;
-    color: var(--text-primary);
-    border: none;
-    padding: 10px 16px;
-    border-radius: var(--border-radius-button);
+    background-color: var(--accent-secondary-light);
+    color: var(--accent-secondary);
+    border: 1px solid #dcd1f0;
+    padding: 10px 18px;
+    border-radius: 20px; /* Completamente redondeado como un chip */
     cursor: pointer;
     font-size: 0.9rem;
+    font-weight: 500;
     transition: all 0.2s ease;
 }
 .bot-message .suggestion-btn:hover {
-    background-color: #636366;
+    background-color: var(--accent-secondary);
+    color: white;
+    border-color: var(--accent-secondary);
     transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(103, 58, 183, 0.2);
 }
 
 /* --- ÁREA DE ENTRADA --- */
 .input-area {
     padding: 20px;
-    border-top: 1px solid var(--header-footer-border);
-    background: #262628; /* Mismo color que el header para simetría */
+    border-top: 1px solid var(--border-color);
+    background: #f8f9fa; /* Un poco más oscuro que el blanco para la sección */
 }
-
 .input-capsule {
     background-color: var(--input-bg);
     border-radius: var(--border-radius-button);
-    padding: 4px;
     display: flex;
     align-items: center;
-    border: 1px solid var(--header-footer-border);
-    transition: border-color 0.2s ease;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
 }
 .input-capsule:focus-within {
-    border-color: var(--text-accent);
+    border-color: var(--accent-primary);
+    background-color: var(--app-bg);
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
 }
 .input-capsule input {
     flex-grow: 1;
@@ -247,11 +197,9 @@ body {
     outline: none;
     color: var(--text-primary);
     font-size: 1.1rem;
-    padding: 12px 16px;
+    padding: 14px 18px;
 }
-.input-capsule input::placeholder {
-    color: var(--text-secondary);
-}
+.input-capsule input::placeholder { color: var(--text-secondary); }
 
 .button-container {
     display: flex;
@@ -260,45 +208,47 @@ body {
     margin-top: 18px;
 }
 .button-container button {
-    padding: 12px 24px;
+    padding: 12px 28px;
     border: none;
     border-radius: var(--border-radius-button);
-    background-color: var(--input-bg);
-    color: var(--text-primary);
+    background-color: var(--accent-primary);
+    color: white;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.2);
 }
 .button-container button:hover {
-    background-color: #4f4f52;
-    transform: scale(1.03);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(25, 118, 210, 0.3);
 }
+/* Estilo secundario para el botón 'Simple' */
+.button-container button:first-of-type {
+    background-color: var(--input-bg);
+    color: var(--text-secondary);
+    box-shadow: none;
+}
+.button-container button:first-of-type:hover {
+    background-color: #e3e6e9;
+    color: var(--text-primary);
+    transform: translateY(0);
+    box-shadow: none;
+}
+
 
 /* --- CLASES DE ESTADO Y ANIMACIONES --- */
-.hidden {
-    display: none !important;
-}
+.hidden { display: none !important; }
 
-/* Spinner de carga */
 .loader {
     width: 24px;
     height: 24px;
-    border: 3px solid #ffffff40;
+    border: 3px solid #0000001a;
     border-top: 3px solid var(--text-primary);
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    margin: 8px; /* Para que no esté pegado al borde */
+    margin: 8px;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes fadeInSlideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes fadeInSlideUp { to { opacity: 1; transform: translateY(0); } }
